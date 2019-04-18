@@ -17,8 +17,13 @@
 		$("#loading").show();
   		$("#uploader").hide();
   	}
+  	function populate_records() {
+
+  	}
+
   	$(document).ready(function(){
-  		// show();
+  		show();
+  		populate_records();
 	  $("#upload").click(function() {
 	  	hide();
 		var form = new FormData();
@@ -55,21 +60,48 @@
   </script>
 </head>
 <body>
-<div id="loading" style="left: 50%; top: 50%;transform: translate(48%, 500%);">
-	<img src="http://localhost:8000/24.gif" style="left: 50%; top: 50%;transform: translate(200%, 0%);"/>
-	<p>Please Wait loading response...</p>
-</div>
-<div class="container" id="uploader">
-  <h2>Malicious app Detector</h2>
-  <p>Upload apk file which you want to check.</p>
-  <form class="form-inline" action="" name="apkform">
-    <div class="form-group">
-      <label class="sr-only" for="papk" name="papk">Apk File:</label>
-      <input type="file" class="form-control" id="apk" name="apk" accept=".apk">
-    </div>
-    <button type="button" id="upload" class="btn btn-default">Submit</button>
-  </form>
-</div>
+	<div id="loading" style="left: 50%; top: 50%;transform: translate(48%, 500%);">
+		<img src="http://localhost:8000/24.gif" style="left: 50%; top: 50%;transform: translate(200%, 0%);"/>
+		<p>Please Wait loading response...</p>
+	</div>
+	<div class="container" id="uploader">
+	  <h2>Malicious app Detector</h2>
+	  <p>Upload apk file which you want to check.</p>
+	  <form class="form-inline" action="" name="apkform">
+	    <div class="form-group">
+	      <label class="sr-only" for="papk" name="papk">Apk File:</label>
+	      <input type="file" class="form-control" id="apk" name="apk" accept=".apk">
+	    </div>
+	    <button type="button" id="upload" class="btn btn-default">Submit</button>
+	  </form>
+	</div>
+
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Name</th>
+	      <th scope="col">Status</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <th scope="row">1</th>
+	      <td>Demo.apk</td>
+	      <td>Processing</td>
+	    </tr>
+	    <tr class="table-success">
+	      <th scope="row">2</th>
+	      <td>Second.apk</td>
+	      <td >Done</td>
+	    </tr>
+	    <tr>
+	      <th scope="row">3</th>
+	      <td>failure.apk</td>
+	      <td>Failed</td>
+	    </tr>
+	  </tbody>
+	</table>
 
 </body>
 </html>
