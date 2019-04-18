@@ -53,3 +53,20 @@ Deleted fields in androwarn report
 'external_classes_list',
 'classes_hierarchy'    ,
 'intents_sent'
+
+<br>
+```
+pip install mysql-connector
+
+CREATE DATABASE cybsec;
+
+USE cybsec;
+
+CREATE TABLE IF NOT EXISTS `status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` varchar(255) NOT NULL,
+  `finish_time` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+);
+
+```
