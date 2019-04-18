@@ -18,13 +18,12 @@ pip install yara
 ```
 <br>
 androwarn
-```
-pip install androwarn
-
-```
+<br>
+```pip install androwarn```
 <br>
 Deleted fields in androwarn report
 <br>
+
 **Application**
 'package_name'         ,
 'description'
