@@ -55,6 +55,7 @@ Deleted fields in androwarn report
 'intents_sent'
 
 <br>
+
 ```
 pip install mysql-connector
 
@@ -68,5 +69,4 @@ CREATE TABLE IF NOT EXISTS `status` (
   `finish_time` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 );
-
 ```
