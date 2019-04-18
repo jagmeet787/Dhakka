@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Malicious App Detector</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script type="text/javascript">
+  	function show() {
+  		$("#loading").hide();
+  		$("#uploader").show();
+  	}
+  	function hide() {
+		$("#loading").show();
+  		$("#uploader").hide();
+  	}
+  	$(document).ready(function(){
+  		// show();
+	  $("#upload").click(function() {
+	  	hide();
+		var form = new FormData();
+		form.append("apk", $('input[type=file]')[0].files[0]);
+		$.ajax({
+			type : 'POST',
+			url : 'http://localhost:8000/upload',
+			data : form,
+			mimeType : "multipart/form-data",
+			processData: false,
+			success : function (data) {
+				show();
+			},
+			statusCode : {
+				201 : function (created) {
+					show();
+					swal("Created successfully");
+					console.log("Created successfully")
+				},
+				500 : function(err) {
+					show();
+					console.log("Interval server error.");
+				}
+			},
+			error : function (err) {
+				show();
+				console.log(err.status);
+			},
+			crossDomain: true,
+			contentType : false
+		});
+	  });
+	});
+  </script>
+</head>
+<body>
+<div id="loading" style="left: 50%; top: 50%;transform: translate(48%, 500%);">
+	<img src="http://localhost:8000/24.gif" style="left: 50%; top: 50%;transform: translate(200%, 0%);"/>
+	<p>Please Wait loading response...</p>
+</div>
+<div class="container" id="uploader">
+  <h2>Malicious app Detector</h2>
+  <p>Upload apk file which you want to check.</p>
+  <form class="form-inline" action="" name="apkform">
+    <div class="form-group">
+      <label class="sr-only" for="papk" name="papk">Apk File:</label>
+      <input type="file" class="form-control" id="apk" name="apk" accept=".apk">
+    </div>
+    <button type="button" id="upload" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+</body>
+</html>

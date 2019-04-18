@@ -1,6 +1,7 @@
 **Falcon**
 ```
 pip install falcon
+pip install falcon-cors
 pip install falcon-multipart
 pip install waitress
 waitress-serve --port=8000 main:app
