@@ -18,7 +18,21 @@
   		$("#uploader").hide();
   	}
   	function populate_records() {
-
+  		$.ajax({
+  			type : 'GET',
+  			url : 'http://localhost:8000/allrecords',
+  			success : function (all_records) {
+  				var data = "";
+  				for (var i = 1; i <= all_records.length; i++) {
+  					data += "<tr>";
+  					data += "<th scope='row'>" + i + "</th>";
+  					data += "<td>" + all_records[i-1][3] + "</td>";
+  					data += "<td>" + all_records[i-1][1] + "</td>";
+  					data += "</tr>";
+  				}
+  				$('#records tbody').prepend(data);
+  			}
+  		});
   	}
 
   	$(document).ready(function(){
@@ -76,7 +90,7 @@
 	  </form>
 	</div>
 
-	<table class="table">
+	<table class="table" id="records">
 	  <thead>
 	    <tr>
 	      <th scope="col">#</th>
@@ -85,21 +99,6 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	    <tr>
-	      <th scope="row">1</th>
-	      <td>Demo.apk</td>
-	      <td>Processing</td>
-	    </tr>
-	    <tr class="table-success">
-	      <th scope="row">2</th>
-	      <td>Second.apk</td>
-	      <td >Done</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">3</th>
-	      <td>failure.apk</td>
-	      <td>Failed</td>
-	    </tr>
 	  </tbody>
 	</table>
 
