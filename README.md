@@ -19,7 +19,11 @@ pip install yara
 <br>
 androwarn
 <br>
-```pip install androwarn```
+
+```
+pip install androwarn
+```
+
 <br>
 Deleted fields in androwarn report
 <br>
